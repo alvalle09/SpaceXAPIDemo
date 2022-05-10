@@ -1,8 +1,10 @@
+import React, { Component } from 'react';
 import './App.css';
 import logo from './logo.png';
 
-function App() {
-  return (
+class App extends Component {
+  render () {
+    return (
     <div className="App">
       <img 
         src={logo}
@@ -10,7 +12,9 @@ function App() {
         style={{ width: 300, display: 'block', margin: 'auto'}}
         />
     </div>
-  );
+    );
+  }
 }
 
 export default App;
+ 
