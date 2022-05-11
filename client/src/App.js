@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { ApolloClient, ApolloProvider } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import Launches from './components/Launches';
 import './App.css';
 import logo from './logo.png';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql'
+  uri: 'http://localhost:5000/graphql',
+  cache: new InMemoryCache()
 })
 
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
             alt='SpaceX'
             style={{ width: 300, display: 'block', margin: 'auto'}}
             />
+            <Launches/>
         </div>
       </ApolloProvider>
     );
