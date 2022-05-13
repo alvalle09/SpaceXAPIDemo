@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import gql from 'graphql-tag';
-import { Query } from '@apollo/client';
+
+import { gql, useQuery } from '@apollo/client';
 
 const LAUNCHES_QUERY = gql`
     query LaunchesQuery {
@@ -13,12 +12,19 @@ const LAUNCHES_QUERY = gql`
     }
 `;
 
-export default class Launches extends Component {
-  render() {
+export default function Launches() {
+    const { loading, error, data } = useQuery(LAUNCHES_QUERY);
+
+    if (error) return <h4>Error!</h4>
+    if (loading) return <h4>Loading...</h4>
+
     return (
+    <>
       <div>
          <h1 className="display-4 my-3">Launches</h1>
+        
       </div>
+      </>
     )
-  }
+    
 }
