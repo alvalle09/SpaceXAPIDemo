@@ -19,13 +19,19 @@ export default function Launches() {
 
     if (error) return <h4>Error!</h4>
     if (loading) return <h4>Loading...</h4>
-    console.log(data);
 
-    return (
-    
+
+    return (        
       <Fragment>
          <h1 className="display-4 my-3">Launches</h1>
          <h4> Test! </h4>
+         {
+             data.launches.map(launch => (
+                <LaunchItem key={launch.flight_number} launch={launch} />
+             ))
+         }
+
+         
       </Fragment>
       
     )
