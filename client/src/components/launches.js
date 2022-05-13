@@ -1,12 +1,14 @@
 
 import { gql, useQuery } from '@apollo/client';
-
+import { Fragment } from 'react';
+import LaunchItem from './LaunchItem';
+  
 const LAUNCHES_QUERY = gql`
     query LaunchesQuery {
         launches {
             flight_number
-            missing_name
-            launch_date_loca
+            mission_name
+            launch_date_local
             launch_success
         }
     }
@@ -17,14 +19,15 @@ export default function Launches() {
 
     if (error) return <h4>Error!</h4>
     if (loading) return <h4>Loading...</h4>
+    console.log(data);
 
     return (
-    <>
-      <div>
+    
+      <Fragment>
          <h1 className="display-4 my-3">Launches</h1>
-        
-      </div>
-      </>
+         <h4> Test! </h4>
+      </Fragment>
+      
     )
     
 }
