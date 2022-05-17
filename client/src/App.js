@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Launches from './components/Launches';
 import './App.css';
 import logo from './logo.png';
@@ -13,15 +14,23 @@ class App extends Component {
   render () {
     return (
       <ApolloProvider client={client}>
+        
         <div className="container">
           <img 
             src={logo}
             alt='SpaceX'
             style={{ width: 300, display: 'block', margin: 'auto'}}
             />
-            <Launches/>
+            <BrowserRouter>
+        
+              <Routes>
+            
+                <Route exact path='/' element={<Launches/>}/>
+              </Routes>
+              </BrowserRouter>
         </div>
-      </ApolloProvider>
+        
+      </ApolloProvider>      
     );
   }
 }
