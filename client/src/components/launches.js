@@ -1,4 +1,5 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
 import { Fragment } from 'react';
 import LaunchItem from './LaunchItem';
 import MissionKey from './MissionKey';
