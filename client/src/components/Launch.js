@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { Link, useParams } from 'react-router-dom';
 
 const LAUNCH_QUERY = gql`
   query LaunchQuery($flight_number: Int!){
@@ -20,16 +21,21 @@ const LAUNCH_QUERY = gql`
   }
 `;
 
-export class Launch extends Component {
-  render() {
-    let { flight_number } = this.props.match.params;
+export default function Launch () {      
+    let { flight_number } = useParams();
+    flight_number = parseInt(flight_number);
+
+    const { loading, error, data } = useQuery(LAUNCH_QUERY, {variables: {flight_number}});
+
+    if (loading) return  <h4>Loading...</h4> ;
+  if (error) console.log(error);
+   console.log(data);
 
     return (
-      <div>
-          <h1>Launch</h1>
-      </div>
+      <Fragment>
+        <h1>Test</h1>
+                
+      </Fragment>
     )
   }
-}
 
-export default Launch
