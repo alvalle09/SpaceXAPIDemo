@@ -35,7 +35,11 @@ export default function Launch() {
 
   return (
     <Fragment>
-      <h1>Test</h1>
+      <div>
+        <h1 className="display-4 my-3">
+          <span className="text-dark">Mission:</span> {data.launch.misson_name}
+        </h1>
+      </div>
     </Fragment>
   );
 }
